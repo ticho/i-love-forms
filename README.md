@@ -1,24 +1,12 @@
-# README
+# I love forms
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails project to get to know the different form helpers.
 
-Things you may want to cover:
+We made the same form 3 different way, using:
+  - HTML
+  - form_tag
+  - form_for 
 
-* Ruby version
+We also handled the errors 2 different way: redirection or render of the errors on the page.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[https://tibo-loves-forms.herokuapp.com/](https://tibo-loves-forms.herokuapp.com/)

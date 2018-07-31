@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  # Initializing @errors
+
   def new
     @errors = []
   end
@@ -7,6 +10,7 @@ class UsersController < ApplicationController
     @errors = []
   end
 
+  # rendering the errors if they exist, redirectiong toward homepage otherwise
   def create
     user = User.create(
       username: params[:username],
@@ -21,6 +25,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # making it possible to type in a username in the URL
   def show
     if params[:id].to_i.to_s == params[:id]
       @user = User.find(params[:id])
@@ -33,14 +38,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  # initializing @errors
   def new_for
-    puts "THERE"
-    puts @errors
-    puts "THERE"
     @errors = [] if !@errors
     @user = User.new
   end
 
+  # redirectiong to error page if there was an error
   def create_for
     @user = User.new(user_params)
     if @user.save
@@ -57,7 +61,8 @@ class UsersController < ApplicationController
   end
 
   private 
-
+  
+  # needed this for the form_for way, otherwise strong parameters aren't allowed to be touched this way
   def user_params
     params.require(:user).permit(:username, :email, :bio)
   end
