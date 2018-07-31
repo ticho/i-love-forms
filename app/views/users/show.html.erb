@@ -1,0 +1,11 @@
+<div class="container">
+<% if @user %>
+<h2>Profil de <%= @user.username %></h2>
+<h2>Bio</h2>
+<%= @user.bio %>
+<% else %>
+<h2>Utilisateur non trouvé</h2>
+<% end %>
+<br>
+<%= link_to("Back to home", content=root_path, options = {class: 'btn btn-sm btn-primary'}) %>
+</div>
