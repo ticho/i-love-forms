@@ -1,2 +1,40 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container">
+
+<% if @errors.any? %>
+<div class="alert alert-danger" role="alert">
+<strong>User wasn't created because :</strong>
+<ul>
+<% @errors.messages.each do |error| %>
+  <li><%= error[0] %></li>
+  <ul>
+  <% error[1].each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+</ul>
+</div>
+
+<% end %>
+
+
+<h1>Create a new user</h1>
+<%= form_tag( '/users/create' , method: "post") do |f| %>
+<div class="form-group">
+<%= label_tag('username', content = "User Name") %>
+<%= text_field_tag(:username, content = nil, {class: "form-control", placeholder: "User name"}) %>
+</div>
+<div class="form-group">
+<%= label_tag('email', content = "Email") %>
+<%= text_field_tag(:email, content = nil, {class: "form-control", placeholder: "Email"}) %>
+</div>
+<div class="form-group">
+<%= label_tag('bio', content = "Bio") %>
+<%= text_area_tag(:bio, content = "Hello! I am ...", options = {size: "25x10", class: "form-control"}) %>
+</div>
+<%= submit_tag("Create user", {class: 'btn btn-default btn-lg btn-submit'}) %>
+<div>
+</div>
+<% end %>
+<%= link_to("Back to home", content=root_path, options = {class: 'btn btn-sm btn-primary'}) %>
+</div>
