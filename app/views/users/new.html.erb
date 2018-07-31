@@ -17,9 +17,9 @@
 
 <% end %>
 
-
 <h1>Create a new user</h1>
 <%= form_tag( '/users/create' , method: "post") do |f| %>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 <div class="form-group">
 <%= label_tag('username', content = "User Name") %>
 <%= text_field_tag(:username, content = nil, {class: "form-control", placeholder: "User name"}) %>
@@ -38,4 +38,5 @@
 <% end %>
 <br>
 <%= link_to("Back to home", content=root_path, options = {class: 'btn btn-sm btn-primary'}) %>
+
 </div>

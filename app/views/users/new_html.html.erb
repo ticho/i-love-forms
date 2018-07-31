@@ -1,0 +1,43 @@
+<div class="container">
+
+<% if @errors.any? %>
+<div class="alert alert-danger" role="alert">
+<strong>User wasn't created because :</strong>
+<ul>
+<% @errors.messages.each do |error| %>
+  <li><%= error[0] %></li>
+  <ul>
+  <% error[1].each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+</ul>
+</div>
+
+<% end %>
+
+<h1>Create a new user</h1>
+<form action="/users/create" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<div>
+  <label for="name">Name :</label>
+  <input type="text" name="username" placeholder="Enter name" class="form-control">
+</div>
+<div>
+  <label for="email">Email :</label>
+  <input type="text" name="username" placeholder="Enter email" class="form-control">
+</div>
+<div>
+  <label for="bio">Bio :</label>
+  <textarea name="bio" rows="4" cols="50" class="form-control">Hello ! I am ....</textarea>
+</div>
+<br>
+<div>
+  <button type="submit" class="btn btn-primary">Créer le nouvel utilisateur</button>
+</div>
+</form>
+<br>
+<%= link_to("Back to home", content=root_path, options = {class: 'btn btn-sm btn-primary'}) %>
+
+</div>
